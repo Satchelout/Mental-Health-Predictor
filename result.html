@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #227b7a;
+            padding: 40px;
+            color: white;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 50%;
+            margin: auto;
+            box-shadow: 0px 0px 15px gray;
+            color: black;
+        }
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .result {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+            margin-top: 20px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <p>Your predicted mental health condition is:</p>
+        <div class="result">{{ prediction }}</div>
+        <a href="{{ url_for('landing') }}" class="button">Go Back</a>
+    </div>
+</body>
+</html>
