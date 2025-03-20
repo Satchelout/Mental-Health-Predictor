@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Prediction</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #1a1e7e;
+            padding: 40px;
+            color: white;
+        }
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 60%;
+            max-width: 600px;
+            box-shadow: 0px 0px 15px gray;
+            text-align: center;
+            color: black;
+        }
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 24px;
+        }
+        h3 {
+            margin-bottom: 15px;
+            border-bottom: 2px solid #1a1e7e;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .radio-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+            margin-top: 5px;
+        }
+        .radio-group label {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            display: block;
+            width: 50%;
+            margin: 20px auto;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mental Health Prediction Assessment</h1>
+
+    <form action="/predict" method="post">
+        <div class="main-container">
+            <!-- Numerical Inputs -->
+            <div class="container">
+                <h3>Emotional & Cognitive State (0-10 scale)</h3>
+
+                <label for="sexualActivity">Sexual Activity:</label>
+                <input type="range" name="sexualActivity" id="sexualActivitySlider" min="0" max="10" step="1" value="5" 
+                    oninput="document.getElementById('sexualActivityValue').textContent = this.value">
+                <span id="sexualActivityValue">5</span>
+
+                <label for="concentration">Concentration:</label>
+                <input type="range" name="concentration" id="concentrationSlider" min="0" max="10" step="1" value="5" 
+                    oninput="document.getElementById('concentrationValue').textContent = this.value">
+                <span id="concentrationValue">5</span>
+
+                <label for="optimism">Optimism:</label>
+                <input type="range" name="optimism" id="optimismSlider" min="0" max="10" step="1" value="5" 
+                    oninput="document.getElementById('optimismValue').textContent = this.value">
+                <span id="optimismValue">5</span>
+            </div>
+
+            <!-- Binary Inputs -->
+            <div class="container">
+                <h3>Behavioral Pattern Assessment (Yes/No)</h3>
+
+                <label for="moodSwing"><strong>Mood Swing:</strong></label>
+                <div class="radio-group">
+                    <label><input type="radio" name="moodSwing" value="1" required> Yes</label>
+                    <label><input type="radio" name="moodSwing" value="0" required> No</label>
+                </div>
+
+                <label for="suicidalThought">Suicidal Thought:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="suicidalThought" value="1" required> Yes</label>
+                    <label><input type="radio" name="suicidalThought" value="0" required> No</label>
+                </div>
+
+                <label for="anorexia">Anorexia:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="anorexia" value="1" required> Yes</label>
+                    <label><input type="radio" name="anorexia" value="0" required> No</label>
+                </div>
+                <label for="authorityRespect">Authority Respect:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="authorityRespect" value="1" required> Yes</label>
+                    <label><input type="radio" name="authorityRespect" value="0" required> No</label>
+                </div>
+
+                <label for="tryExplanation">Try Explanation:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="tryExplanation" value="1" required> Yes</label>
+                    <label><input type="radio" name="tryExplanation" value="0" required> No</label>
+                </div>
+                <label for="aggressiveResponse">Aggressive Response:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="aggressiveResponse" value="1" required> Yes</label>
+                    <label><input type="radio" name="aggressiveResponse" value="0" required> No</label>
+                </div>
+
+                <label for="ignoreMoveOn">Ignore & Move-On:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="ignoreMoveOn" value="1" required> Yes</label>
+                    <label><input type="radio" name="ignoreMoveOn" value="0" required> No</label>
+                </div>
+
+                <label for="nervousBreakdown">Nervous Breakdown:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="nervousBreakdown" value="1" required> Yes</label>
+                    <label><input type="radio" name="nervousBreakdown" value="0" required> No</label>
+                </div>
+
+                <label for="admitMistakes">Admit Mistakes:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="admitMistakes" value="1" required> Yes</label>
+                    <label><input type="radio" name="admitMistakes" value="0" required> No</label>
+                </div>
+
+                <label for="overthinking">Overthinking:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="overthinking" value="1" required> Yes</label>
+                    <label><input type="radio" name="overthinking" value="0" required> No</label>
+                </div>
+            </div>
+           
+                
+            <!-- Ordinal Inputs -->
+            <div class="container">
+                <h3>Psychological & Physiological Factors</h3>
+
+                <label for="sadness">Sadness:</label>
+                <select name="sadness" required>
+                    <option value="1">Seldom</option>
+                    <option value="2">Sometimes</option>
+                    <option value="3">Usually</option>
+                    <option value="4">Most Often</option>
+                </select>
+
+                <label for="euphoric">Euphoric:</label>
+                <select name="euphoric" required>
+                    <option value="1">Seldom</option>
+                    <option value="2">Sometimes</option>
+                    <option value="3">Usually</option>
+                    <option value="4">Most Often</option>
+                </select>
+
+                <label for="exhausted">Exhausted:</label>
+                <select name="exhausted" required>
+                    <option value="1">Seldom</option>
+                    <option value="2">Sometimes</option>
+                    <option value="3">Usually</option>
+                    <option value="4">Most Often</option>
+                </select>
+                <label for="sleepDisorder">Sleep Disorder:</label>
+                <select name="sleepDisorder" required>
+                    <option value="1">Seldom</option>
+                    <option value="2">Sometimes</option>
+                    <option value="3">Usually</option>
+                    <option value="4">Most Often</option>
+                </select>
+            </div>
+            <!-- End of Ordinal Inputs -->
+            
+
+            
+
+
+
+            <!-- Prediction Output -->
+            <div class="container">
+                <h3>Prediction Result</h3>
+                <p>Fill in the details and Click Predict Button</Button>.</p>
+                <button type="submit">Predict</button>
+
+                {% if prediction %}
+                    <div class="result">
+                        <p>Predicted Mental Health Condition: <strong>{{ prediction }}</strong></p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+
+</body>
+</html>

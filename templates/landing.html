@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Prediction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-green-600 text-white py-6 text-center shadow-md">
+        <h1 class="text-3xl font-bold">Welcome to Mental Health Prediction Assessment</h1>
+        <p class="text-lg mt-2">Your well-being matters. Get insights into your mental health.</p>
+    </header>
+
+    <main class="flex flex-col items-center py-12 px-6">
+        <section class="bg-white shadow-lg rounded-lg p-8 max-w-2xl text-center">
+            <h2 class="text-2xl font-semibold text-green-600">About Our Platform</h2>
+            <p class="mt-4 text-gray-700">This platform uses advanced machine learning models to assess mental health based on provided inputs. Take a short assessment to get insights and recommendations.</p>
+        </section>
+
+        <section class="bg-green-100 shadow-lg rounded-lg p-8 max-w-2xl text-center mt-8">
+            <h2 class="text-2xl font-semibold text-green-600">Start Your Assessment</h2>
+            <p class="mt-4 text-gray-700">Click the button below to proceed to the mental health prediction tool.</p>
+            <a href="{{ url_for('assessment') }}" class="mt-6 inline-block px-6 py-3 bg-green-600 text-white text-lg font-medium rounded-lg shadow-md hover:bg-green-700 transition">Take Assessment</a>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-4 mt-12">
+        <p class="text-sm">Projected by @ Aahan, Kshitiz, Sudeep, Sahil, Shivangi.</p>
+    </footer>
+</body>
+</html>
